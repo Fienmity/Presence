@@ -81,8 +81,10 @@ export function getActivity(): Activity | undefined {
 	}
 	
 	// Timestamps
-
-	if (!activity.timestamps.start && !activity.timestamps.end) {
+	if (!activity.timestamps?.end) {
+		delete(activity.timestamps?.end);
+	}
+	if (!activity.timestamps?.start && !activity.timestamps?.end || (!activity.timestamps?.start)) {
 		console.log("No timestamps")
 		activity.timestamps = undefined
 	}
