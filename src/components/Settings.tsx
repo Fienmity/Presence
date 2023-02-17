@@ -41,19 +41,6 @@ export default ({ settings }: SettingsProps) => {
 	return <KeyboardAvoidingView behavior='padding' style={{ flex: 1 }}>
 		<ScrollView>
 			<FormSection title="Basic">
-				<FormRow 
-					label="Set to the time you started Discord"
-					subLabel="Set start timestamps to the time you started Discord"
-					trailing={
-						<FormSwitch 
-							value={settings.getBoolean('setStartTime', false)}
-							label="Set to the time you started Discord"
-							onValueChange={() => {
-								settings.toggle('setStartTime', false);
-							}}
-						/>
-					}
-				/>
 				<FormInput
 					value={settings.get('applicationId')}
 					onChange={(value) => settings.set('applicationId', value || undefined)}
@@ -70,6 +57,19 @@ export default ({ settings }: SettingsProps) => {
 				)}
 			</FormSection>
 			<FormSection title="Timestamps">
+				<FormRow 
+					label="Set to the time you started Discord"
+					subLabel="Set start timestamps to the time you started Discord"
+					trailing={
+						<FormSwitch 
+							value={settings.getBoolean('setStartTime', false)}
+							label="Set to the time you started Discord"
+							onValueChange={() => {
+								settings.toggle('setStartTime', false);
+							}}
+						/>
+					}
+				/>
 				{timestampData.map((timestamp) => 
 					<FormInput
 						value={settings.get(`${timestamp.toLowerCase()}Timestamp`)}
