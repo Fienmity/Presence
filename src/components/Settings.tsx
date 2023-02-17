@@ -63,7 +63,6 @@ export default ({ settings }: SettingsProps) => {
 					trailing={
 						<FormSwitch 
 							value={settings.getBoolean('setStartTime', false)}
-							label="Set to the time you started Discord"
 							onValueChange={() => {
 								settings.toggle('setStartTime', false);
 							}}
