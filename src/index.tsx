@@ -4,7 +4,7 @@ import Manifest from './manifest.json';
 import Settings from './components/Settings';
 import { setActivity } from './rpc';
 import { getActivity, hasAppIdAndName } from './activity';
-import { get } from 'enmity/api/settings';
+import { set } from 'enmity/api/settings';
 import { getByProps } from 'enmity/metro';
 
 const ReactNative = getByProps('AppState')
@@ -15,6 +15,7 @@ const Presence: Plugin = {
    onStart() {
       let attempt = 0;
       const attempts = 3;
+      set(Manifest.name, 'launchTime', Date.now());
       const lateStartup = () => {
          try {
             attempt++;

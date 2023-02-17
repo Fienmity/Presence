@@ -1,4 +1,4 @@
-import { get } from "enmity/api/settings";
+import { get, getBoolean } from "enmity/api/settings";
 import { GatewayActivity, GatewayActivityButton } from 'discord-api-types/v10';
 import Manifest from './manifest.json';
 
@@ -18,7 +18,7 @@ export function getActivity(): Activity | undefined {
 		buttons: [],
 		timestamps: {
 			// .toInteger() is used to convert the string to a number
-			start: Number(get(Manifest.name, 'startTimestamp', undefined)),
+			start: Number(getBoolean(Manifest.name, 'setStartTime', false) ? get(Manifest.name, 'launchTime') : get(Manifest.name, 'startTimestamp', undefined)),
 			end: Number(get(Manifest.name, 'endTimestamp', undefined)),
 		},
 	}
